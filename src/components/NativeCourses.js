@@ -23,7 +23,9 @@
 
  });
 
- const dataSource = ds.cloneWithRows(data);
+ const toDelete = new Set(['react']);
+ const newData = data.filter(obj => !toDelete.has(obj.category));
+ const dataSource = ds.cloneWithRows(newData);
 
 type Props = {};
 export default class NativeCourses extends Component<Props> {

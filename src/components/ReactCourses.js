@@ -27,7 +27,9 @@ const ds = new ListView.DataSource({
 
 });
 
-const dataSource = ds.cloneWithRows(data);
+const toDelete = new Set(['native']);
+const newData = data.filter(obj => !toDelete.has(obj.category));
+const dataSource = ds.cloneWithRows(newData);
 
 type Props = {};
 export default class ReactCourses extends Component<Props> {
@@ -109,7 +111,7 @@ const styles = StyleSheet.create({
     width: 373,
     left: 0,
     fontSize: 15,
-    backgroundColor: 'rgba(245, 252, 255, 0.60)',
+    backgroundColor: 'rgba(245, 252, 255, 0.40)',
   },
   action: {
     borderStyle: 'solid',
